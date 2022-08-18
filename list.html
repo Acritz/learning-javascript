@@ -1,30 +1,36 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>To do app</title>
-    </head>
-    <body>
-        <input id="add-to-list" type="text">
-        <button onclick="push()">add</button>
-        <div id="main-div"></div>
-        <script>
-            let array = ['get groceries', 'wash car'];
-            function add(){
-                let div = document.getElementById('main-div');
-                div.innerText = '';
-                array.forEach(one=>{
-                    let element = document.createElement('div');
-                    element.innerText = one;
-                    div.appendChild(element);
-                })
+
+<head>
+
+</head>
+
+<body>
+    <div id='receipt'>btuh</div>
+    <script>
+        let array = [
+            {
+                name: 'apple', price: 4, quantity: 2
+            },
+            {
+                name: 'orange', price: 3, quantity: 3
             }
-            function push(){
-                let value = document.getElementById('add-to-list').value;
-                array.push(value);
-                add();
-                value = '';
-            }
-            add();
-        </script>
-    </body>
+        ];
+
+        function cartTotal(object) {
+            let sum = 0;
+            object.forEach(element => {
+                sum += element.price * element.quantity;
+            });
+            return sum;
+        }
+        function receipt(array){
+            let div = document.getElementById('receipt');
+            div.innerText = '';
+            let elemeent
+        }
+        receipt(array);
+    </script>
+</body>
+
 </html>
