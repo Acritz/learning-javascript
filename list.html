@@ -4,16 +4,27 @@
         <title>To do app</title>
     </head>
     <body>
-        <div id="counter">0</div>
-        <button onclick="up()">up</button>
+        <input id="add-to-list" type="text">
+        <button onclick="push()">add</button>
+        <div id="main-div"></div>
         <script>
-            let count = 0
-            let todos = ['aba', 'ebe'];
-            function up(){
-                let counter = document.getElementById('counter');
-                count += 1;
-                counter.innerHTML = count;
+            let array = ['get groceries', 'wash car'];
+            function add(){
+                let div = document.getElementById('main-div');
+                div.innerText = '';
+                array.forEach(one=>{
+                    let element = document.createElement('div');
+                    element.innerText = one;
+                    div.appendChild(element);
+                })
             }
+            function push(){
+                let value = document.getElementById('add-to-list').value;
+                array.push(value);
+                add();
+                value = '';
+            }
+            add();
         </script>
     </body>
 </html>
