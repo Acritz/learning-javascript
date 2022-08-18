@@ -5,12 +5,15 @@
     </head>
     <body>
         <script>
-            function addTodo(html_element,inner){
-                let element = document.createElement(html_element);
-                element.innerText = inner;
-                document.body.appendChild(element);
+            let array = ['ola', 'ole'];
+            let array2 = [];
+            function toUpper(array){
+                array.forEach(element => {
+                    array2.push(element.toUpperCase());
+                });
             }
-           addTodo('div','bruh');
+            toUpper(array);
+            console.log(array2);
         </script>
     </body>
 </html>
