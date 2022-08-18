@@ -4,16 +4,16 @@
         <title>To do app</title>
     </head>
     <body>
+        <div id="counter">0</div>
+        <button onclick="up()">up</button>
         <script>
-            let array = ['ola', 'ole'];
-            let array2 = [];
-            function toUpper(array){
-                array.forEach(element => {
-                    array2.push(element.toUpperCase());
-                });
+            let count = 0
+            let todos = ['aba', 'ebe'];
+            function up(){
+                let counter = document.getElementById('counter');
+                count += 1;
+                counter.innerHTML = count;
             }
-            toUpper(array);
-            console.log(array2);
         </script>
     </body>
 </html>
