@@ -1,36 +1,55 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
-
-<head>
-
-</head>
-
-<body>
-    <div id='receipt'>btuh</div>
-    <script>
-        let array = [
-            {
-                name: 'apple', price: 4, quantity: 2
-            },
-            {
-                name: 'orange', price: 3, quantity: 3
+    <head>
+        <title>To do app</title>
+    </head>
+    <body>
+        <input type="text" id="add-to-list">
+        <input type="date" id="dueDate">
+        <button onclick="add_to_list()">Add to do</button>
+        <div id="main-div"></div>
+        <script>
+            let list = [
+                {
+                    title: 'Get groceries',
+                    date: '2021/10/04',
+                    id: 'id1'
+                }
+            ];
+            function render(){
+                let div = document.getElementById('main-div');
+                div.innerText = '';
+                list.forEach(item=>{
+                    let element = document.createElement('div');
+                    element.innerText = item.title + ' - ' + item.date;
+                    let deletebutton = document.createElement('button');
+                    deletebutton.innerText = 'Delete';
+                    deletebutton.onclick = deleteTodo;
+                    deletebutton.id = item.id;
+                    element.appendChild(deletebutton);
+                    div.appendChild(element);
+                })}
+            function deleteTodo(event){
+                const deleteButton = event.target;
+                const idToDelete = deleteButton.id;
+                list = list.filter(item=>{
+                    if(item.id === idToDelete){
+                        return false;
+                    }
+                    else {
+                        return true;
+                    }
+                })
+                render();
             }
-        ];
-
-        function cartTotal(object) {
-            let sum = 0;
-            object.forEach(element => {
-                sum += element.price * element.quantity;
-            });
-            return sum;
-        }
-        function receipt(array){
-            let div = document.getElementById('receipt');
-            div.innerText = '';
-            let elemeent
-        }
-        receipt(array);
-    </script>
-</body>
-
+            function add_to_list(){
+                list.push({
+                    title: document.getElementById('add-to-list').value,
+                    date: document.getElementById('dueDate').value,
+                    id: '' + new Date().getTime()
+                });
+                render();
+            }
+        </script>
+    </body>
 </html>
